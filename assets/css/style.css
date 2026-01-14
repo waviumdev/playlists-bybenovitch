@@ -1,0 +1,253 @@
+:root{
+  /* Playlists theme: magenta/violet accents, neutral surfaces */
+  --bg:#070412;              /* violet très sombre */
+  --paper:#F5F5F2;
+  --muted:#B8B8B3;
+  --line:rgba(255,255,255,.10);
+
+  --card:#101214;            /* neutre */
+  --radius:16px;
+  --max:1120px;
+  --shadow: 0 10px 30px rgba(0,0,0,.28);
+
+  /* Brand / theme */
+  --brand:#B026FF;           /* violet/magenta signature */
+  --brand2:#5A1FD6;
+
+  /* Page accent (override per page) */
+  --accent: var(--brand);
+
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+/* Glow on the page background (not on the content) */
+html{
+  min-height:100%;
+  background:
+    radial-gradient(1000px 520px at 15% 0%, rgba(176,38,255,.22), transparent 60%),
+    radial-gradient(900px 520px at 85% 10%, rgba(90,31,214,.20), transparent 55%),
+    var(--bg);
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+body{
+  margin:0;
+  font-family:var(--font);
+  background: transparent;
+  color:var(--paper);
+  line-height:1.5;
+}
+
+a{color:inherit; text-decoration:none}
+a:hover{opacity:.92}
+.small{font-size:.92rem;color:var(--muted)}
+.container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+/* Brand bar */
+.brandbar{
+  border-bottom:1px solid var(--line);
+  background:rgba(10,10,10,.9);
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(8px);
+}
+.brandbar .row{
+  display:flex; align-items:center; justify-content:space-between;
+  height:54px;
+}
+.brandbar .left{font-weight:650; letter-spacing:.2px}
+.brandbar nav{display:flex; gap:12px; align-items:center; font-size:.95rem}
+.pill{
+  border:1px solid var(--line);
+  padding:6px 10px;
+  border-radius:999px;
+}
+.pill.active{
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);
+}
+
+/* Header */
+.header{padding:22px 0 10px}
+.header .row{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.logo{display:flex; gap:14px; align-items:center}
+.logo img{
+  height:112px;
+  width:auto;
+  object-fit:contain;
+  border-radius:0;
+}
+.logo .title{font-weight:750; letter-spacing:.2px}
+.logo .subtitle{font-size:.9rem; color:var(--muted)}
+
+.localnav{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end;
+}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--paper);
+  font-weight:650;
+}
+.btn.primary{
+  background: linear-gradient(180deg, rgba(176,38,255,1), rgba(90,31,214,1));
+  border-color:rgba(255,255,255,.14);
+}
+.btn.secondary{
+  border-color: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+}
+.btn.accent{
+  border-color: rgba(255,255,255,.14);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 85%, #000), rgba(16,18,20,.92));
+}
+
+.btn.navlink.active{
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+}
+
+/* Layout */
+.section{padding:26px 0}
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap:14px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px;
+}
+.span-12{grid-column: span 12}
+.span-8{grid-column: span 8}
+.span-6{grid-column: span 6}
+.span-4{grid-column: span 4}
+
+.kicker{
+  color:var(--muted);
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:.78rem;
+}
+.card h1, .card h2, .card h3{margin:8px 0 8px; line-height:1.12}
+.card p{margin:0; color:var(--muted)}
+.hr{
+  height:1px; background:var(--line); border:0; margin:14px 0;
+}
+
+/* Hero */
+.hero .card{
+  background: linear-gradient(180deg, rgba(176,38,255,.16), rgba(16,18,20,.96));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:var(--shadow);
+}
+.hero h1{font-size:2.2rem}
+.hero .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+/* Playlist cards */
+.playlist-grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap:14px;
+}
+.playlist-card{
+  grid-column: span 6;
+  display:flex;
+  gap:14px;
+  align-items:stretch;
+  padding:16px;
+  border-radius:var(--radius);
+  background: rgba(16,18,20,.92);
+  border:1px solid rgba(255,255,255,.10);
+}
+.playlist-card.featured{
+  grid-column: span 12;
+}
+.playlist-cover{
+  width:128px;
+  height:128px;
+  border-radius:14px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+}
+.playlist-meta{flex:1; min-width:0}
+.playlist-title{
+  display:flex; align-items:center; gap:10px;
+}
+.accent-dot{
+  width:10px; height:10px; border-radius:999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.04);
+}
+.playlist-meta h3{margin:6px 0 6px}
+.playlist-meta p{margin:0; color:var(--muted)}
+.playlist-meta .actions{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+
+.playlist-card:hover{
+  border-color: rgba(255,255,255,.16);
+  transform: translateY(-1px);
+  transition: transform .15s ease, border-color .15s ease;
+}
+
+/* Spotify embed */
+.spotify-embed iframe{border:0}
+.spotify-actions{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  margin-top:12px;
+}
+.spotify-actions .hint{
+  margin:0;
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+/* Callout blocks */
+.callout{
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  border-radius: 14px;
+  padding:16px;
+}
+.callout h3{margin:0 0 6px}
+.callout p{margin:0; color:var(--muted)}
+.callout .actions{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+
+/* Footer */
+.footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:18px 0;
+  margin-top:40px;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.footer-right a{margin-left:6px}
+.footer-right span{margin:0 6px; opacity:.4}
+
+/* Responsive */
+@media (max-width: 860px){
+  .span-8,.span-6,.span-4{grid-column: span 12}
+  .hero h1{font-size:1.8rem}
+  .header .row{flex-direction:column; align-items:flex-start}
+  .localnav{justify-content:flex-start}
+
+  .playlist-card{grid-column: span 12}
+  .playlist-cover{width:110px; height:110px}
+}
